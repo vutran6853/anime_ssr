@@ -83,7 +83,6 @@ class Categories extends React.Component {
         console.log(`value[${index}] = `, value)
         return (
           <Link href={`/anime/AnimeInfo?id=${value.id}`} as={`/anime?id=${value.id}`} key={value.canonicalTitle}>
-            
             <div className="anime_card_item">
               <h3>{value.attributes.canonicalTitle}</h3>
               <img src={value.attributes.posterImage.small} alt={value.attributes.posterImage.small}></img>

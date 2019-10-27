@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Layout from './Layout'
 
-const About = () => {
+function About() {
   const [word, setWord] = useState('hello')
   return (
     <Layout>

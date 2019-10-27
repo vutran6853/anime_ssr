@@ -1,6 +1,6 @@
 import Navbar from '../components/navbar/Navbar'
 
-const Layout = (props) => {
+function Layout(props) {
   return (
     <div>
       <Navbar />

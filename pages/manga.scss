@@ -1,0 +1,42 @@
+$borderColor: 2px solid red;
+
+@mixin display_flex_row {
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin display_flex_column {
+  display: flex;
+  flex-direction: column;
+}
+
+.manga_card_container {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 10px;
+
+  .manga_card_item {
+    width: 100%;
+    border: 5px solid gold;
+    @include display_flex_column();
+    text-align: center;
+
+    p {
+      width: 100%;
+    }
+
+    .manga_card_rate {
+      // border: $borderColor;
+      @include display_flex_row();
+
+      p {
+        // border: 2px solid purple;
+      }
+    }
+    &:hover {
+      background-color: blueviolet;
+      cursor: pointer;
+    }
+  }
+}

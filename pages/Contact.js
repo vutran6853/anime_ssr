@@ -1,6 +1,6 @@
 import Layout from './Layout'
 
-const Contact = () => {
+function Contact() {
   return <Layout>Contact Component</Layout>
 }
 

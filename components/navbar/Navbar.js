@@ -1,9 +1,8 @@
 import React from 'react'
 import Link from 'next/link'
-// import {Link} from 'react-router-dom'
 import './navbar.scss'
 
-const Navbar = () => {
+function Navbar() {
   return (
     <div className="navbar_container">
       {/* <Link href="">
@@ -18,10 +17,12 @@ const Navbar = () => {
       <Link href="/contact">
         <a>Contact</a>
       </Link>
-      <Link href="/Categories">
+      <Link href="/categories">
         <a>Categories</a>
       </Link>
-      
+      <Link href="/manga">
+        <a>Manga</a>
+      </Link>
     </div>
   )
 }

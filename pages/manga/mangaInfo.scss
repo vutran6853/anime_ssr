@@ -1,6 +1,6 @@
 $borderColor: 4px solid green;
 
-.animeInfo_card_container {
+.mangaInfo_card_container {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -9,7 +9,7 @@ $borderColor: 4px solid green;
   // border: 5px solid blue;
 }
 
-.animeInfo_card_item {
+.mangaInfo_card_item {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -18,7 +18,7 @@ $borderColor: 4px solid green;
   box-shadow: 5px 5px greenyellow;
   height: 90vh;
 
-  .animeInfo_card_rate_info {
+  .mangaInfo_card_rate_info {
     display: flex;
     flex-direction: row;
   }
