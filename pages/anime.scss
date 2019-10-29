@@ -1,4 +1,4 @@
-$borderColor: 2px solid red;
+$fontSize: 18px;
 
 @mixin display_flex_row {
   display: flex;
@@ -11,31 +11,30 @@ $borderColor: 2px solid red;
 }
 
 .anime_card_container {
+  @include display_flex_column();
   margin-top: 10px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 10px;
+  font-size: $fontSize;
 
   .anime_card_item {
-    width: 100%;
-    border: 5px solid gold;
-    @include display_flex_column();
-    text-align: center;
+    margin: auto;
+    margin-bottom: 2rem;
 
-    p {
-      width: 100%;
+    h3 {
+      text-align: center;
+    }
+
+    img {
+      height: 30rem;
+      width: 30rem;
     }
 
     .anime_card_rate {
-      border: $borderColor;
       @include display_flex_row();
-
-      p {
-        border: 2px solid purple;
-      }
+      justify-content: space-between;
     }
+
     &:hover {
-      background-color: red;
+      background-color: lightskyblue;
       cursor: pointer;
     }
   }

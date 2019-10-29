@@ -11,17 +11,20 @@ function Navbar() {
       <Link href="/about">
         <a>About</a>
       </Link>
-      <Link href="/anime">
-        <a>Anime</a>
+      <Link href="/genres">
+        <a>Genres</a>
       </Link>
       <Link href="/contact">
         <a>Contact</a>
       </Link>
-      <Link href="/categories">
+      {/* <Link href="/categories">
         <a>Categories</a>
-      </Link>
+      </Link> */}
       <Link href="/manga">
         <a>Manga</a>
+      </Link>
+      <Link href="/trending">
+        <a>Trending</a>
       </Link>
     </div>
   )

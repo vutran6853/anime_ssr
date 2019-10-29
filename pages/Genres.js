@@ -1,21 +1,21 @@
 import Layout from './Layout'
-import './categories.scss'
+import './genres.scss'
 import Link from 'next/link'
+import Navbar from '../components/navbar/Navbar'
 
-class Categories extends React.Component {
+class Genres extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      categoriesList: [],
+      genresList: [],
       animeInfo: [],
-      categoriesID: 0,
-      animeInfoBool: false
+      genresID: 0,
+      genresInfoBool: false
     }
     this.handleSelectCat = this.handleSelectCat.bind(this)
   }
 
   componentDidMount() {
-    console.log('componentDidMount Cat')
     fetch('https://kitsu.io/api/edge/categories')
       .then((response) => response.json())
       .then((response) => {
@@ -24,39 +24,41 @@ class Categories extends React.Component {
           // console.log(`value[${index}] =`, value.attributes);
           result.push(value.attributes)
         })
-        this.setState({ categoriesList: ['---', ...result] })
+        this.setState({ genresList: ['---', ...result] })
       })
   }
 
   componentWillUnmount() {
-    console.log('componentWillUnmount Cat')
+    this.setState({
+      genresList: [],
+      animeInfo: [],
+      genresID: 0,
+      genresInfoBool: false
+    })
   }
 
   handleSelectCat(e) {
-    this.setState({ categoriesID: parseInt(e.target.value) }, function anonymous() {
+    this.setState({ genresID: parseInt(e.target.value) }, function anonymous() {
       this.handleFetchAnimeInfo()
     })
   }
 
   handleFetchAnimeInfo() {
-    console.log('handleFetchAnimeInfo', this.state.categoriesID)
-
-    fetch(`https://kitsu.io/api/edge/categories/${this.state.categoriesID}/anime`)
+    fetch(`https://kitsu.io/api/edge/categories/${this.state.genresID}/anime`)
       .then((response) => response.json())
       .then((response) => {
         console.log('response=', response.data)
         if (response.errors) {
-          this.setState({ animeInfoBool: false })
+          this.setState({ genresInfoBool: false })
           throw new Error()
         }
 
         this.setState({
-          animeInfoBool: true,
+          genresInfoBool: true,
           animeInfo: response.data
-          // animeInfo: response.data.map((value) => value.attributes)
         })
       })
-      .catch((err) => {
+      .catch(function anonymous(err) {
         console.log('Unable fetch handleFetchAnimeInfo()', err)
       })
   }
@@ -64,7 +66,7 @@ class Categories extends React.Component {
   render() {
     // console.log(this.state)
 
-    const renderCategoriesOption = this.state.categoriesList.map((value, index) => {
+    const renderCategoriesOption = this.state.genresList.map(function anonymous(value, index) {
       return (
         <option value={index} key={value.title}>
           {value.title}
@@ -72,17 +74,17 @@ class Categories extends React.Component {
       )
     })
 
-    const renderCategoriesSelect = this.state.categoriesList ? (
+    const renderCategoriesSelect = this.state.genresList ? (
       <select onChange={this.handleSelectCat}>{renderCategoriesOption}</select>
     ) : (
-      <div>false</div>
+      <React.Fragment></React.Fragment>
     )
 
-    const isAnimeList = this.state.animeInfoBool ? (
+    const isAnimeList = this.state.genresInfoBool ? (
       this.state.animeInfo.map(function anonymous(value, index) {
-        console.log(`value[${index}] = `, value)
+        // console.log(`value[${index}] = `, value)
         return (
-          <Link href={`/anime/AnimeInfo?id=${value.id}`} as={`/anime?id=${value.id}`} key={value.canonicalTitle}>
+          <Link href={`/genres/genresInfo?id=${value.id}`} as={`genres/genresInfo?id=${value.id}`} key={value.id}>
             <div className="anime_card_item">
               <h3>{value.attributes.canonicalTitle}</h3>
               <img src={value.attributes.posterImage.small} alt={value.attributes.posterImage.small}></img>
@@ -99,24 +101,16 @@ class Categories extends React.Component {
       <div>false</div>
     )
 
-    // const renderAnimeList = this.state.animeInfo.map(function anonymous(value, index) {
-    //   console.log(`value[${index}] = `, value);
-    //   return (
-    //     <div>{value.id}</div>
-    //   )
-    // })
-
-    // const isAnimeList = this.state.categoriesID
-
     return (
-      <Layout>
-        <div>Categories Components</div>
+      <React.Fragment>
+        <Navbar />
+        <div>Genres Components</div>
         {renderCategoriesSelect}
         <div className="anime_card_container">{isAnimeList}</div>
         {/* {renderAnimeList} */}
-      </Layout>
+      </React.Fragment>
     )
   }
 }
 
-export default Categories
+export default Genres

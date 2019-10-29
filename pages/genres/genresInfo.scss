@@ -1,0 +1,42 @@
+$borderColor: 4px solid green;
+
+.genresInfo_card_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 100vh;
+  align-items: center;
+  // border: 5px solid blue;
+}
+
+.genresInfo_card_item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 50vw;
+  border: 1px solid blue;
+  box-shadow: 5px 5px greenyellow;
+  height: 90vh;
+
+  .genresInfo_card_rate_info {
+    display: flex;
+    flex-direction: row;
+  }
+
+  h3 {
+    text-align: center;
+  }
+
+  p {
+    width: 100%;
+    text-align: left;
+  }
+
+  img {
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    height: 50vh;
+    width: 40vw;
+  }
+}

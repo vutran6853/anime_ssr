@@ -60,7 +60,6 @@ class Manga extends React.Component {
 
     return (
       <Layout>
-        <div>Manga Component</div>
         <div className="manga_card_container">{isMangaList}</div>
       </Layout>
     )

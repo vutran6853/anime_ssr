@@ -1,7 +1,6 @@
-// import React, { Component, Fragment } from 'react'
-// import fetchAnimeInfo from '../../components/animes/AnimeInfo'
 import './animeInfo.scss'
 import Link from 'next/link'
+import Navbar from '../../components/navbar/Navbar'
 
 class AnimeInfo extends React.Component {
   state = {
@@ -13,7 +12,6 @@ class AnimeInfo extends React.Component {
     fetch(`https://kitsu.io/api/edge/anime/${this.props.url.query.id}`)
       .then((response) => response.json())
       .then((response) => {
-        // console.log('response=', response.data.attributes)
         this.setState({
           animeInfoData: response.data.attributes,
           animeInfoImageData: response.data.attributes.posterImage
@@ -23,33 +21,33 @@ class AnimeInfo extends React.Component {
   }
 
   render() {
-    console.log(this.state)
-
     const renderAnimeInfo = this.state.animeInfoData ? (
       <div className="animeInfo_card_item">
         <h3>{this.state.animeInfoData.canonicalTitle}</h3>
         <img src={this.state.animeInfoImageData.medium} alt={this.state.animeInfoData.canonicalTitle} />
         <p>
-          {' '}
-          <strong>Desc: </strong> {this.state.animeInfoData.synopsis}
+          <strong>Description: </strong> {this.state.animeInfoData.synopsis}
         </p>
-        <span className="animeInfo_card_rate_info">
+        <div className="animeInfo_card_rate_info">
           <p>
-            <strong>ageRating:</strong> {this.state.animeInfoData.ageRating}
+            <strong>Age:</strong> {this.state.animeInfoData.ageRating}
           </p>
           <p>
-            <strong>ageRatingGuide:</strong> {this.state.animeInfoData.ageRatingGuide}
+            <strong>Tag:</strong> {this.state.animeInfoData.ageRatingGuide}
           </p>
-        </span>
-        <p>
-          <strong>episodeLength:</strong> {this.state.animeInfoData.episodeLength}
-        </p>
-        <p>
-          <strong>popularityRank:</strong> {this.state.animeInfoData.popularityRank}
-        </p>
-        <p>
-          <strong>Release Date:</strong> {this.state.animeInfoData.startDate}
-        </p>
+          <p>
+            <strong>Rate:</strong> {this.state.animeInfoData.averageRating}
+          </p>
+          <p>
+            <strong>Episode Length:</strong> {this.state.animeInfoData.episodeLength}
+          </p>
+          <p>
+            <strong>Popularity Rank:</strong> {this.state.animeInfoData.popularityRank}
+          </p>
+          <p>
+            <strong>Release Date:</strong> {this.state.animeInfoData.startDate}
+          </p>
+        </div>
       </div>
     ) : (
       <div>False</div>
@@ -58,41 +56,12 @@ class AnimeInfo extends React.Component {
     return (
       <div className="animeInfo_card_container">
         {renderAnimeInfo}
-        <Link href="">
+        <Link href="/">
           <button>Home</button>
         </Link>
       </div>
     )
   }
 }
-
-// const AnimeInfo = async (props) => {
-//   console.log('enter AnimeInfo 4', props.url.query)
-//   // const value = fetchAnimeInfo(props.url.query.id)
-//   const fetchAnimeInfo = async function(id) {
-//     // let result = {}
-//    await fetch(`https://kitsu.io/api/edge/anime/${props.url.query.id}`)
-//       .then((response) => response.json())
-//       .then((response) => {
-//         console.log('response=', response.data.attributes)
-//         return response.data.attributes
-//       })
-//       .catch((err) => console.error('Danger unable to fetch at fetchAnimeInfo()' + err))
-
-//     // return result
-//   }
-
-//   const value = await fetchAnimeInfo()
-
-//   console.log(value)
-
-//   return (
-//     <div>
-//       <p>AnimeInfo Component</p>
-//       {/* <p>{fetchAnimeInfo().ageRating}</p> */}
-//       {/* <p>{fetchAnimeInfo().createdAt}</p> */}
-//     </div>
-//   )
-// }
 
 export default AnimeInfo

@@ -1,42 +1,41 @@
 $borderColor: 4px solid green;
 
-.animeInfo_card_container {
+@mixin display_flex_row {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  height: 100vh;
-  align-items: center;
-  // border: 5px solid blue;
+}
+
+@mixin display_flex_column {
+  display: flex;
+  flex-direction: column;
+}
+
+.animeInfo_card_container {
+  @include display_flex_column();
 }
 
 .animeInfo_card_item {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 50vw;
-  border: 1px solid blue;
+  border: 5px solid royalblue;
   box-shadow: 5px 5px greenyellow;
-  height: 90vh;
+  // height: 90vh;
 
   .animeInfo_card_rate_info {
-    display: flex;
-    flex-direction: row;
+    @include display_flex_row();
+    justify-content: space-around;
+    border: 5px solid firebrick;
+
+    // flex-direction: row;
   }
 
   h3 {
-    text-align: center;
-  }
-
-  p {
-    width: 100%;
-    text-align: left;
+    // text-align: center;
   }
 
   img {
-    display: flex;
-    flex-direction: row;
-    align-self: center;
-    height: 50vh;
-    width: 40vw;
+    // display: flex;
+    // flex-direction: row;
+    // align-self: center;
+    // height: 100%;
+    // width: 100%;
   }
 }
